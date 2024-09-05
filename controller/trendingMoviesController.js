@@ -47,3 +47,21 @@ export const getOne = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+export const update = async(req,res)=>{
+    try {
+        
+        const id = req.params.id;
+        const trendingMovieExist = await trendingMovie.findById(id);
+        if(!trendingMovieExist){
+            return res.status(404).json({msg:"trendingMovie Not Found!"});
+        }
+
+        const updatedData = await trendingMovie.findByIdAndUpdate(id,req.body,{new:true});
+        res.status(200).json(updatedData);
+
+
+    } catch (error) {
+        res.status(500).json({error:error});
+    }
+}

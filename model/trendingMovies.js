@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 const movieSchema = new mongoose.Schema({
-    id:{
-        type: Number,
-        required:true
-    },
     title: {
         type: String,
         required: true,
@@ -51,6 +47,10 @@ const movieSchema = new mongoose.Schema({
     },
     video: {
         type: Boolean,
+        required: false,
+    },
+    videoURL: {
+        type: String,
         required: false,
     },
     createdAt: {
